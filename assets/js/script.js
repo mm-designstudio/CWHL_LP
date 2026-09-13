@@ -67,7 +67,7 @@ const revealSelector = [
   '.flow-list li'
 ].join(',');
 const revealElements = [...document.querySelectorAll(revealSelector)]
-  .filter((element) => !element.closest('.usage-item'));
+  .filter((element) => !element.closest('.usage-item, .case-slider'));
 const usageItems = [...document.querySelectorAll('.usage-item')];
 
 usageItems.forEach((item, index) => {
@@ -106,6 +106,70 @@ if (contactSection && contactButton && !reduceMotion && 'IntersectionObserver' i
   }, { threshold: 0.2 });
 
   contactObserver.observe(contactSection);
+}
+
+const caseSlider = document.querySelector('.case-slider');
+
+if (caseSlider) {
+  const viewport = caseSlider.querySelector('.case-slider-viewport');
+  const track = caseSlider.querySelector('.case-slider-track');
+  const slides = [...caseSlider.querySelectorAll('.case-slide')];
+  const dots = [...caseSlider.querySelectorAll('.case-dot')];
+  const previousButton = caseSlider.querySelector('.case-prev');
+  const nextButton = caseSlider.querySelector('.case-next');
+  let currentSlide = 0;
+  let swipeStartX = null;
+
+  const showSlide = (requestedIndex) => {
+    currentSlide = (requestedIndex + slides.length) % slides.length;
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    slides.forEach((slide, index) => slide.setAttribute('aria-hidden', String(index !== currentSlide)));
+    dots.forEach((dot, index) => {
+      const isCurrent = index === currentSlide;
+      dot.classList.toggle('is-active', isCurrent);
+      if (isCurrent) dot.setAttribute('aria-current', 'true');
+      else dot.removeAttribute('aria-current');
+    });
+  };
+
+  previousButton?.addEventListener('click', () => showSlide(currentSlide - 1));
+  nextButton?.addEventListener('click', () => showSlide(currentSlide + 1));
+  dots.forEach((dot, index) => dot.addEventListener('click', () => showSlide(index)));
+  viewport?.addEventListener('keydown', (event) => {
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+    event.preventDefault();
+    showSlide(currentSlide + (event.key === 'ArrowRight' ? 1 : -1));
+  });
+  const finishSwipe = (endX) => {
+    if (swipeStartX === null) return;
+    const distance = endX - swipeStartX;
+    swipeStartX = null;
+    if (Math.abs(distance) < 45) return;
+    showSlide(currentSlide + (distance < 0 ? 1 : -1));
+  };
+
+  if ('PointerEvent' in window) {
+    viewport?.addEventListener('pointerdown', (event) => {
+      if (event.pointerType === 'mouse') return;
+      swipeStartX = event.clientX;
+    });
+    viewport?.addEventListener('pointerup', (event) => {
+      if (event.pointerType === 'mouse') return;
+      finishSwipe(event.clientX);
+    });
+    viewport?.addEventListener('pointercancel', () => { swipeStartX = null; });
+  } else {
+    viewport?.addEventListener('touchstart', (event) => {
+      swipeStartX = event.changedTouches[0]?.clientX ?? null;
+    }, { passive: true });
+    viewport?.addEventListener('touchend', (event) => {
+      const endX = event.changedTouches[0]?.clientX;
+      if (typeof endX === 'number') finishSwipe(endX);
+    }, { passive: true });
+    viewport?.addEventListener('touchcancel', () => { swipeStartX = null; }, { passive: true });
+  }
+
+  showSlide(0);
 }
 
 // Reveal only the comp's separate strokes, without connecting curves.
