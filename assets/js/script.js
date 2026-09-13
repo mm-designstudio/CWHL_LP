@@ -120,6 +120,8 @@ const initCaseSlider = () => {
   const nextButton = caseSlider.querySelector('.case-next');
   let currentSlide = 0;
   let swipeStartX = null;
+  let autoplayTimer = null;
+  const autoplayDelay = 5000;
 
   const showSlide = (requestedIndex) => {
     currentSlide = (requestedIndex + slides.length) % slides.length;
@@ -133,20 +135,35 @@ const initCaseSlider = () => {
     });
   };
 
-  previousButton?.addEventListener('click', () => showSlide(currentSlide - 1));
-  nextButton?.addEventListener('click', () => showSlide(currentSlide + 1));
-  dots.forEach((dot, index) => dot.addEventListener('click', () => showSlide(index)));
+  const stopAutoplay = () => {
+    if (autoplayTimer === null) return;
+    window.clearInterval(autoplayTimer);
+    autoplayTimer = null;
+  };
+  const startAutoplay = () => {
+    stopAutoplay();
+    if (reduceMotion || document.hidden) return;
+    autoplayTimer = window.setInterval(() => showSlide(currentSlide + 1), autoplayDelay);
+  };
+  const showSlideManually = (requestedIndex) => {
+    showSlide(requestedIndex);
+    startAutoplay();
+  };
+
+  previousButton?.addEventListener('click', () => showSlideManually(currentSlide - 1));
+  nextButton?.addEventListener('click', () => showSlideManually(currentSlide + 1));
+  dots.forEach((dot, index) => dot.addEventListener('click', () => showSlideManually(index)));
   viewport?.addEventListener('keydown', (event) => {
     if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
     event.preventDefault();
-    showSlide(currentSlide + (event.key === 'ArrowRight' ? 1 : -1));
+    showSlideManually(currentSlide + (event.key === 'ArrowRight' ? 1 : -1));
   });
   const finishSwipe = (endX) => {
     if (swipeStartX === null) return;
     const distance = endX - swipeStartX;
     swipeStartX = null;
     if (Math.abs(distance) < 45) return;
-    showSlide(currentSlide + (distance < 0 ? 1 : -1));
+    showSlideManually(currentSlide + (distance < 0 ? 1 : -1));
   };
 
   if ('PointerEvent' in window) {
@@ -171,6 +188,15 @@ const initCaseSlider = () => {
   }
 
   showSlide(0);
+  startAutoplay();
+  caseSlider.addEventListener('focusin', stopAutoplay);
+  caseSlider.addEventListener('focusout', (event) => {
+    if (!caseSlider.contains(event.relatedTarget)) startAutoplay();
+  });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopAutoplay();
+    else startAutoplay();
+  });
 };
 
 if (document.readyState === 'loading') {
