@@ -108,9 +108,10 @@ if (contactSection && contactButton && !reduceMotion && 'IntersectionObserver' i
   contactObserver.observe(contactSection);
 }
 
-const caseSlider = document.querySelector('.case-slider');
-
-if (caseSlider) {
+const initCaseSlider = () => {
+  const caseSlider = document.querySelector('.case-slider');
+  if (!caseSlider || caseSlider.dataset.sliderReady === 'true') return;
+  caseSlider.dataset.sliderReady = 'true';
   const viewport = caseSlider.querySelector('.case-slider-viewport');
   const track = caseSlider.querySelector('.case-slider-track');
   const slides = [...caseSlider.querySelectorAll('.case-slide')];
@@ -170,6 +171,12 @@ if (caseSlider) {
   }
 
   showSlide(0);
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initCaseSlider, { once: true });
+} else {
+  initCaseSlider();
 }
 
 // Reveal only the comp's separate strokes, without connecting curves.
