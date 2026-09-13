@@ -107,3 +107,16 @@ if (contactSection && contactButton && !reduceMotion && 'IntersectionObserver' i
 
   contactObserver.observe(contactSection);
 }
+
+// Reveal only the comp's separate strokes, without connecting curves.
+(() => {
+ const svg=document.querySelector('.usage-track');if(!svg)return;
+ const paths=[...svg.querySelectorAll('.guide-segment')];
+ const strokes=paths.map(p=>{const length=p.getTotalLength(),a=p.getPointAtLength(0),b=p.getPointAtLength(length);p.style.strokeDasharray=length;return {p,length,a,b};});
+ let current=0,target=0,frame=0,last=0;
+ const paint=()=>strokes.forEach(({p,length,a,b})=>{const t=Math.max(0,Math.min(1,(current-a.y)/(b.y-a.y)));p.style.strokeDashoffset=length*(1-t);});
+ const measure=()=>{const r=svg.getBoundingClientRect();target=reduceMotion?2300:Math.max(0,Math.min(2300,(innerHeight*.65-r.top)*2300/(r.height||2300)));};
+ const tick=now=>{const dt=last?Math.min(64,now-last):16;last=now;current+=(target-current)*(1-Math.exp(-dt/100));if(Math.abs(target-current)<.1)current=target;paint();if(current!==target)frame=requestAnimationFrame(tick);else{frame=0;last=0;}};
+ const update=()=>{measure();if(!frame)frame=requestAnimationFrame(tick);};
+ measure();current=target;paint();addEventListener('scroll',update,{passive:true});addEventListener('resize',update);
+})();

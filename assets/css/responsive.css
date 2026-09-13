@@ -1,0 +1,175 @@
+/* Mobile adaptation of the approved PC v2. Desktop rules remain untouched. */
+@media (max-width:767px) {
+ html { scroll-padding-top:76px; }
+ main section[id] { scroll-margin-top:0; }
+ body { font-size:15px; line-height:1.85; letter-spacing:.025em; background:#f8fcff; }
+ .site-header { height:64px; }
+ .header-inner { padding:0 20px; }
+ .site-logo img { width:44px; height:48px; }
+ .menu-button { width:44px; height:44px; padding:12px 10px; }
+ .global-nav { top:64px; max-height:calc(100dvh - 64px); overflow-y:auto; }
+ .global-nav a { min-height:44px; }
+ .nav-contact { background:#3289cb; font-size:12px; }
+ .hero { height:auto; padding-top:55.903vw; background-size:100% auto; background-position:center top; background-color:#eef7fd; }
+ .hero-inner { height:auto; padding:28px 20px 32px; width:100%; display:flex; gap:20px; }
+ .hero h1 { position:static; transform:none; margin:0; font-size:28px; line-height:1.5; letter-spacing:.025em; }
+ .hero-lead { transform:none; background:none; padding:0; margin:0; width:100%; font-size:14px; line-height:1.9; }
+ .hero-lead br { display:none; }
+ .hero-cta { position:static; transform:none; width:100%; height:auto; min-height:60px; padding:14px 10px; margin:0; font-size:13px; color:#fff; background:#3289cb; border:0; white-space:normal; text-align:center; line-height:1.7; }
+ .section-inner,.comparison-inner { width:100%; max-width:560px; margin:auto; }
+ .comparison { background:#f8fcff url('../images/common/bg-section-01-03.png') center top/auto 100% no-repeat; padding:0; }
+ .comparison-inner { padding:56px 20px 28px; }
+ .comparison h2 { margin:0 0 32px; font-family:inherit; font-size:20px; line-height:1.7; letter-spacing:0; }
+ .comparison h2 br { display:none; }
+ .comparison-item img { height:auto; aspect-ratio:auto; border-radius:12px; }
+ .comparison-item figcaption { margin:14px 0 0; font-size:16px; }
+ .comparison-item .sp-only { display:none; }
+ .versus { margin:20px 0; font-size:24px; }
+ .comparison-details { margin-top:32px; }
+ .comparison-card { background:rgba(255,255,255,.65); border:0; padding:24px 16px; margin-bottom:20px; }
+ .comparison-card h3 { font-size:18px; line-height:1.6; }
+ .comparison-card p { font-size:15px; line-height:1.9; text-align:left; }
+ .support-message { display:block; min-height:0; margin:28px 0 0; padding:20px; font-size:14px; line-height:1.9; background:rgba(225,240,253,.8); }
+ .cases { padding:36px 20px 56px; border-radius:0; background:#f8fcff url('../images/common/bg-section-01-03.png') center bottom/auto 100% no-repeat; }
+ .section-title,.strengths .section-title,.usage .section-title,.solutions .section-title,.product-compare .section-title { font-size:23px; line-height:1.6; }
+ .cases .section-title { font-size:21px; margin-bottom:32px; }
+ .case-grid,.reason-grid { display:grid; grid-template-columns:minmax(0,1fr); gap:24px; }
+ .case-card { padding:10px 12px 26px; margin:0; border:0; border-top:2px solid #1974ca; background:rgba(255,255,255,.94); }
+ .case-card img { aspect-ratio:auto; height:auto; border-radius:8px; }
+ .case-card h3 { margin:22px 0 16px; font-size:19px; line-height:1.6; }
+ .case-card p { padding:0 8px; font-size:15px; line-height:1.9; text-align:left; }
+ .background-middle { background:#f8fcff url('../images/common/bg-section-04-07.png') center top/auto 100% no-repeat; }
+ .background-bottom { background:#f6faff url('../images/common/bg-section-08-09.png') center top/auto 100% no-repeat; }
+ .background-middle > section,.background-bottom > section { background:transparent; }
+ .strengths,.usage,.reasons,.solutions,.product-compare,.contact { padding:52px 20px; border-radius:0; }
+ .strengths .section-title { margin-bottom:32px; }
+ .product-image { width:260px; max-width:100%; aspect-ratio:auto; height:auto; margin:0 auto 36px; border:0; border-radius:0; background:transparent; }
+ .strength-list li { text-align:left; padding-bottom:24px; margin-bottom:24px; }
+ .strength-list h3 { font-size:18px; line-height:1.65; margin-bottom:14px; }
+ .strength-list p { font-size:15px; line-height:1.9; }
+ .strength-list .sp-only { display:none; }
+ .strength-spec { display:block; font-size:14px; }
+ .usage .section-title { margin-bottom:28px; }
+ .usage-intro { text-align:center; font-size:16px; margin:0 0 32px; }
+ .usage-timeline { padding:0; }
+ .usage-track { display:none; }
+ .usage-item,.usage-item:nth-child(even) { padding:12px 0 0; margin:0 0 40px; border-top:1px solid #79b1e9; }
+ .usage-item img { width:100%; height:auto; aspect-ratio:auto; object-fit:contain; margin:0 0 20px; border:0; border-radius:0; }
+ .usage-item div { text-align:left; }
+ .usage-item h3 { font-size:18px; line-height:1.65; margin-bottom:12px; }
+ .usage-item p { font-size:15px; line-height:1.9; }
+ .js .usage-item.reveal-target,.js .usage-item:nth-child(even).reveal-target { opacity:1; transform:none; translate:none; }
+ .reasons .section-title { font-size:19px; line-height:1.75; margin-bottom:32px; letter-spacing:0; }
+ .reason-card { min-height:0; margin:0; padding:26px 16px; border:0; border-top:1px solid #207bcb; background:rgba(255,255,255,.58); }
+ .reason-card img { width:84px; height:84px; margin-bottom:20px; }
+ .reason-card h3 { font-size:17px; line-height:1.75; }
+ .solutions .section-title { margin-bottom:24px; font-size:22px; }
+ .solutions-lead { font-size:14px; line-height:1.9; margin-bottom:32px; }
+ .solutions-lead br { display:none; }
+ .solution-grid article { display:flex; flex-direction:column; gap:16px; margin-bottom:28px; padding-bottom:28px; border-bottom:1px solid #c7d3df; }
+ .solution-grid article:last-child { padding-bottom:0; border:0; }
+ .solution-grid img { width:96px; height:96px; }
+ .solution-grid h3 { font-size:18px; line-height:1.65; margin-bottom:14px; }
+ .solution-grid p { text-align:left; font-size:15px; line-height:1.9; }
+ .product-compare .section-title { margin-bottom:32px; }
+ .compare-mobile article { background:rgba(255,255,255,.94); border:1px solid #bccddd; border-radius:8px; overflow:hidden; margin-bottom:24px; }
+ .compare-mobile article:last-child { margin-bottom:0; }
+ .compare-mobile h3 { margin:0; padding:16px 12px; font-size:17px; background:#edf5fc; border-bottom:1px solid #bccddd; }
+ .compare-mobile dt { min-height:0; display:block; padding:16px 16px 0; color:var(--text); background:#fff; border-radius:0; font-size:14px; text-align:left; }
+ .compare-mobile dd { min-height:0; display:block; margin:0; padding:8px 16px 18px; background:#fff; border-radius:0; text-align:left; font-size:15px; line-height:1.8; border-bottom:1px solid #d6e0e9; font-weight:500; }
+ .compare-mobile dt:first-of-type,.compare-mobile dd:first-of-type { background:#e8f4fc; font-weight:700; }
+ .compare-mobile dt:first-of-type { color:#0872ce; }
+ .compare-mobile dd:last-child { border-bottom:0; }
+ .compare-mobile small { font-size:14px; }
+ .contact-copy .section-title { font-size:23px; line-height:1.6; margin-bottom:24px; }
+ .contact-copy p { font-size:15px; line-height:1.9; text-align:left; margin-bottom:28px; }
+ .contact-image { height:auto; aspect-ratio:auto; border:0; border-radius:0; margin-bottom:32px; }
+ .flow-list li { min-height:96px; padding:18px; margin-bottom:28px; border:0; background:rgba(255,255,255,.94); }
+ .flow-list span { font-size:12px; margin:0 0 10px; }
+ .flow-list strong { font-size:17px; }
+ .flow-list li:last-child { margin-bottom:0; }
+ .contact-action { margin-top:40px; }
+ .contact-action p { font-size:15px; margin:0; }
+ .contact-action a { max-width:100%; min-height:64px; margin-top:20px; background:#3289cb; font-size:15px; }
+ .site-footer { height:80px; color:#fff; background:#1a4066; }
+ .site-footer small { font-size:11px; letter-spacing:0; }
+ .sticky-cta { font-size:12px; background:#3289cb; }
+}
+@media (max-width:767px) {
+ .comparison-item img { aspect-ratio:27/17; }
+ .case-card:nth-child(1) img { aspect-ratio:88/59; }
+ .case-card:nth-child(2) img { aspect-ratio:341/231; }
+ .case-card:nth-child(3) img { aspect-ratio:179/118; }
+ .product-image { aspect-ratio:501/761; }
+ .usage-item img { aspect-ratio:34/19; }
+ .contact-image { aspect-ratio:5/3; }
+ .js .reveal-target { opacity:1; transform:none; translate:none; transition:none; }
+}
+/* SP review 2: restore the overlaid hero and a quieter type scale. */
+@media (max-width:767px) {
+ .hero { position:relative; height:360px; padding:0; background-size:auto 100%; background-position:right center; }
+ .hero::before { content:''; position:absolute; inset:0; background:linear-gradient(90deg,rgba(255,250,240,.76),rgba(255,250,240,.58) 49%,transparent 76%); pointer-events:none; }
+ .hero-inner { position:relative; height:100%; padding:65px 16px 24px; align-items:flex-start; justify-content:flex-start; gap:20px; }
+ .hero h1 { width:235px; max-width:70%; font-size:22px; line-height:1.55; letter-spacing:0; }
+ .hero-lead { width:225px; max-width:66%; font-size:12px; line-height:1.8; text-align:center; }
+ .hero-cta { width:255px; max-width:78%; min-height:46px; padding:10px 8px; font-size:11px; line-height:1.6; margin-top:0; }
+ .hero-cta span { font-size:16px; }
+ .comparison h2 { font-size:18px; line-height:1.75; }
+ .section-title,.strengths .section-title,.usage .section-title,.solutions .section-title,.product-compare .section-title,.contact-copy .section-title { font-size:20px; line-height:1.65; }
+ .cases .section-title,.reasons .section-title { font-size:18px; line-height:1.75; }
+ .comparison-card h3,.case-card h3,.strength-list h3,.usage-item h3,.solution-grid h3 { font-size:16px; line-height:1.7; }
+ .reason-card h3,.compare-mobile h3,.flow-list strong { font-size:16px; }
+ .comparison-card p,.case-card p,.strength-list p,.usage-item p,.solution-grid p,.contact-copy p { font-size:14px; line-height:1.85; }
+ .support-message,.solutions-lead,.compare-mobile dt,.compare-mobile small { font-size:13px; line-height:1.85; }
+ .compare-mobile dd { font-size:14px; }
+ .comparison-item figcaption,.usage-intro,.contact-action p { font-size:14px; }
+ .strength-spec { font-size:13px; }
+ .contact-action a { font-size:14px; }
+ .comparison-inner { padding-top:44px; }
+ .strengths,.usage,.reasons,.solutions,.product-compare,.contact { padding-top:44px; padding-bottom:44px; }
+ .reason-card { padding:22px 16px; }
+ .reason-card img { width:76px; height:76px; margin-bottom:16px; }
+ .flow-list li { min-height:88px; }
+}
+@media (max-width:767px) { .hero-cta { width:220px; max-width:62%; } }
+/* SP review 3: full hero photograph, single-line CTA and centered comparison. */
+@media (max-width:767px) {
+ .hero { height:calc(55.903vw + 72px); background-size:100% auto; background-position:center top; background-color:#eef7fd; }
+ .hero::before { height:55.903vw; background:linear-gradient(90deg,rgba(255,250,240,.35),rgba(255,250,240,.2) 58%,transparent 76%); }
+ .hero-inner { padding:0; display:block; }
+ .hero h1 { position:absolute; top:17vw; left:8%; width:64%; max-width:none; font-size:clamp(16px,4.8vw,24px); line-height:1.4; }
+ .hero-lead { position:absolute; top:32vw; left:8%; width:64%; max-width:none; font-size:clamp(10px,2.67vw,14px); line-height:1.65; }
+ .hero-cta { position:absolute; top:calc(55.903vw + 12px); left:20px; width:calc(100% - 40px); max-width:none; height:48px; min-height:48px; padding:10px 8px; font-size:12px; white-space:nowrap; }
+ .solution-grid h3 { font-size:15px; letter-spacing:0; white-space:nowrap; }
+ .solution-grid h3 br { display:none; }
+ .compare-mobile h3,.compare-mobile dt,.compare-mobile dd,.compare-mobile small { text-align:center; }
+}
+/* SP review 4: fit copy to the window, calmer headings and scroll reveals. */
+@media (max-width:767px) {
+ .hero h1 { left:12%; width:47%; font-size:clamp(13px,4vw,22px); top:17vw; }
+ .hero-lead { left:13%; width:45%; top:31vw; font-size:clamp(8px,2.4vw,13px); line-height:1.5; letter-spacing:0; }
+ .section-title,.strengths .section-title,.usage .section-title,.solutions .section-title,.product-compare .section-title,.contact-copy .section-title { font-size:18px; line-height:1.65; text-wrap:balance; }
+ .cases .section-title,.reasons .section-title { font-size:16px; line-height:1.75; text-wrap:balance; }
+ .comparison h2 { font-size:16px; line-height:1.8; text-wrap:balance; }
+ .support-message { padding:26px 24px; line-height:2.15; font-weight:500; text-align:left; letter-spacing:.035em; }
+ .strength-list h3,.usage-item h3 { text-align:center; text-wrap:balance; }
+}
+@media (max-width:767px) and (prefers-reduced-motion:no-preference) {
+ .js .reveal-target,.js .usage-item.reveal-target,.js .usage-item:nth-child(even).reveal-target { opacity:0; transform:translateY(14px); translate:none; transition:opacity .7s ease,transform .7s ease; transition-delay:var(--reveal-delay,0ms); }
+ .js .reveal-target.is-visible,.js .usage-item.reveal-target.is-visible,.js .usage-item:nth-child(even).reveal-target.is-visible { opacity:1; transform:translateY(0); }
+}
+/* SP review 5: compact typography with a clear title/body hierarchy. */
+@media (max-width:767px) {
+ .hero-lead { left:14%; width:43%; font-size:clamp(8px,2.4vw,13px); line-height:1.65; text-wrap:balance; }
+ .hero-lead br { display:initial; }
+ .section-title,.strengths .section-title,.usage .section-title,.solutions .section-title,.product-compare .section-title,.contact-copy .section-title { font-size:17px; line-height:1.7; }
+ .comparison h2,.cases .section-title,.reasons .section-title { font-size:15px; line-height:1.8; }
+ .comparison-card h3,.case-card h3,.strength-list h3,.usage-item h3,.reason-card h3,.compare-mobile h3,.flow-list strong { font-size:15px; line-height:1.75; }
+ .comparison-card p,.case-card p,.strength-list p,.usage-item p,.solution-grid p,.contact-copy p,.compare-mobile dd { font-size:13px; line-height:1.95; }
+ .comparison-item figcaption,.usage-intro,.contact-action p { font-size:13px; }
+ .support-message { font-size:12.5px; line-height:2.1; }
+ .solutions-lead,.compare-mobile dt,.compare-mobile small,.strength-spec { font-size:12px; line-height:1.9; }
+ .case-card h3 { margin:20px 0 14px; }
+ .usage-item h3,.strength-list h3 { margin-bottom:14px; }
+}
+@media (max-width:767px) { .hero-lead br { display:none; } .hero-lead { top:30vw; line-height:1.5; } }
